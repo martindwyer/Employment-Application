@@ -1,0 +1,613 @@
+<!doctype HTML>
+<html lang="en-US">
+
+<head>
+    <title>Employment Application Project (CIS 280)</title>
+    <meta charset="utf-8">
+    <meta name="author" content="Martin Dwyer">
+    <meta name="Keywords" content="Employment application Javascript jQuery">
+    <meta name="Description" content="An interactive app using Javascript/jQuery.">
+    <link href="styles/jquery-ui.css" rel="stylesheet" type="text/css" />
+    <link href="styles/jquery-ui.structure.css" rel="stylesheet" type="text/css" />
+    <link href="styles/jquery-ui.theme.css" rel="stylesheet" type="text/css" />
+    <link type="text/css" rel="stylesheet" href="styles/main.css">
+    <script src="js/jquery.js" type="text/javascript"></script>
+    <script src="js/jquery-ui.js" type="text/javascript"></script>
+    <script src="js/jquery.validate.js"></script>
+    <script src="js/site.js" type="text/javascript"></script>
+
+</head>
+<script type="text/javascript">
+    $(window).on('load', function() {
+        if ($(window).width() < 1000) {
+            $('#dialog1').dialog({
+                modal: true,
+                height: 300,
+                width: 300,
+                dialogClass: 'window-too-small',
+                buttons: {
+                    "Ok": function() {
+                        window.open('https://bdo-tech.com/gallery/', '_self');
+                    }
+                },
+                closeOnEscape: false,
+                open: function(event, ui) {
+                    $(this).parent().children().children('.ui-dialog-titlebar-close').hide();
+                }
+            });
+        } else {
+            $('#dialog3').dialog({
+                modal: true,
+                height: 300,
+                width: 300,
+                dialogClass: 'window-too-small',
+                buttons: {
+                    "Ok": function() {
+                        $(this).dialog("close");
+                    }
+                },
+                closeOnEscape: false,
+                open: function(event, ui) {
+                    $(this).parent().children().children('.ui-dialog-titlebar-close').hide();
+                }
+            });
+
+        }
+    });
+
+</script>
+<style>
+    html body div.ui-dialog.ui-corner-all.ui-widget.ui-widget-content.ui-front.window-too-small.ui-dialog-buttons.ui-draggable.ui-resizable div.ui-dialog-titlebar.ui-corner-all.ui-widget-header.ui-helper-clearfix.ui-draggable-handle {
+        width: auto;
+        color: black;
+        background-color: lightgray;
+        font-size-adjust: auto; 
+        padding-top: 5%;
+    }
+    
+    html body div.ui-dialog.ui-corner-all.ui-widget.ui-widget-content.ui-front.window-too-small.ui-dialog-buttons.ui-draggable.ui-resizable div.ui-dialog-buttonpane.ui-widget-content.ui-helper-clearfix div.ui-dialog-buttonset button.ui-button.ui-corner-all.ui-widget {
+        background-color: black;
+    }
+    
+    
+    
+</style>
+<!-- The following dialog box appears when the application is complete -->
+<div id="dialog1" title="Window Too Small">
+    <p>This application designed to be completed on desktop window width over 1,000px. Please resize your window and try again.</p>
+</div>
+<div id="dialog3" title="Demonstration Only">
+    <p>The following application is for demonstration purposes only. It is not an actual application for employment and personal private data should not be submitted.</p>
+</div>
+
+
+<!-- Beginning of web page content -->
+
+<body>
+    <!-- Header styled after that found at careers..com -->
+    <!-- Images taken for illustration purposes only - not for public use -->
+    <header>
+        <div id="header_row_one">
+            <img src="images/careers-logo.png" width="100" height="31" alt=" careers">
+            <ul>
+                <li>Fields of Work</li>
+                <li>Locations</li>
+                <li>How We Hire</li>
+                <li>Students</li>
+                <li>Jobs</li>
+            </ul>
+        </div>
+        <div id="header_row_two">
+            <ul>
+                <li id="your_application">Application</li>
+                <li id="log_out">SIGN OUT</li>
+            </ul>
+        </div>
+    </header>
+    <!-- Page background area is set for styling and containment purposes -->
+    <div id="pageBackground">
+        <!-- The banner image below taken from careers..com.  Not for public use -->
+        <p>
+            <img src="images/PageBanner.png" width="1028" alt="Page Banner" />
+        </p>
+        <!-- Heading and all text styled to match  branded colors using GIMP color pickers -->
+        <div id="appHeading">
+            <h2 id="title-logo">Exploring Opportunities</h2>
+            <h2 id="title-emp-app">Your Employment Application</h2>
+        </div>
+        <!-- Body of employment application begins here with jquery tabs -->
+        <div id="application">
+            <div id="tabs">
+                <ul>
+                    <li><a href="#tabs-0"><span>Personal</span></a></li>
+                    <li><a href="#tabs-1"><span>Education</span></a></li>
+                    <li><a href="#tabs-2"><span>Employment</span></a></li>
+                    <li><a href="#tabs-3"><span>Background</span></a></li>
+                    <li><a href="#tabs-4"><span>Finish</span></a></li>
+                </ul>
+                <!-- The first section of the application gathers personal information and career aspirations -->
+                <div id="tabs-0">
+                    <form name="personal_form" id="personal_form">
+                        <div class="left">
+                            <h2>Your Career</h2>
+                            <label for="careerChoice">Welcome to our all purpose general application. In order to give us an idea of your interests, please select at least one career that would interest you at this time</label><br><br>
+                            <input type="checkbox" name="careerChoice" class="checkbox" value="engineering">Engineering & Technology<br>
+                            <input type="checkbox" name="careerChoice" class="checkbox" value="marketing">Marketing & Communication<br>
+                            <input type="checkbox" name="careerChoice" class="checkbox" value="business">Business Strategy<br>
+                            <input type="checkbox" name="careerChoice" class="checkbox" value="legal">Legal<br>
+                            <input type="checkbox" name="careerChoice" class="checkbox" value="facilities">Facilities<br>
+                            <input type="checkbox" name="careerChoice" class="checkbox" value="sales">Sales & Support<br>
+                            <input type="checkbox" name="careerChoice" class="checkbox" value="design">Design<br>
+                            <input type="checkbox" name="careerChoice" class="checkbox" value="finance">Finance<br>
+                            <input type="checkbox" name="careerChoice" class="checkbox" value="people">People<br>
+                            <label for="email_address" class="text">Email Address:</label>
+                            <input type="text" name="email_address" id="email_address" class="email required" title=" " placeholder="emailaddress@domain.com"><br>
+                            <label for="start_date" class="date_label">Date Available:</label>
+                            <input type="text" name="start_date" id="start_date" class="required" title="Required." size="6" placeholder="MM/DD/YYYY"><br>
+
+                        </div>
+                        <div class="right">
+                            <h2>Personal Information</h2>
+                            <label>Let's get started with some information about you:</label><br>
+                            <label for="first_name" class="text">First Name:</label>
+                            <input type="text" name="first_name" id="first_name" class="required name" title="Required."><br>
+                            <label for="last_name" class="text">Last Name:</label>
+                            <input type="text" name="last_name" id="last_name" class="required name" title="Required."><br>
+                            <label for="address_one" class="text">Address Line 1:</label>
+                            <input type="text" name="address_one" id="address_one" class="required address" title="Required."><br>
+                            <label for="address_two" class="text">Address Line 2:</label>
+                            <input type="text" name="address_two" id="address_two" class="address" title="Required."><br>
+                            <label for="city" class="text">City:</label>
+                            <input type="text" name="city" id="city" class="required address" title="Required."><br>
+                            <label for="state" class="text">State:</label>
+                            <input type="text" name="state" id="state" class="required state" title="Required."><br>
+                            <label for="zip" class="text">ZIP Code:</label>
+                            <input type="text" name="zip" id="zip" class="required zip" title="Required."><br>
+                            <label for="phone" class="text">Phone Number:</label>
+                            <input type="tel" name="phone" id="phone" class="required phone" title="Required." placeholder="xxx-xxx-xxxx"><br>
+                            <label for="ssn" class="text">Social Security Number:</label>
+                            <input type="text" name="ssn" id="ssn" class="required ssn" title="Required." placeholder="xxx-xx-xxxx"><br>
+                            <label for="birth_date" class="text">Date of Birth:</label>
+                            <input type="text" name="birth_date" id="birth_date" class="required" title="Required." placeholder="MM/DD/YYYY"><br>
+
+                        </div>
+                        <div class='page_instructions'>Please review this information carefully. Once completed and accurate, continue with the application by pressing the button below.</div><br>
+                        <input type="button" class="button" value="Submit and Continue" id="submit_personal_form">
+                        <div id="personal_form_error_message" class="error_message">
+                            <p>All highlighted fields must be completed before you can proceed</p>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Section two of the application gathers information related to education and skills -->
+                <div id="tabs-1">
+                    <form name="education_form" id="education_form">
+                        <h2>Education</h2>
+                        <label>We are excited to learn more about you, so now we need to know about your education and the skills that you can use at our company. Complete as many fields below as apply in your case, starting with High School (required).</label>
+                        <div class="row heading">
+                            <label for='school' class='school'>Name of School</label>
+                            <label for='school_city' class='school_city'>City</label>
+                            <label for='school_state' class='school_state'>State</label>
+                            <label for='date_started' class='date_started'>Date Began</label>
+                            <label for='date_ended' class='date_ended'>Last Attended</label>
+                            <label for='grad_status' class='grad_status'>Completed</label><br>
+                        </div>
+                        <div class="row">
+                            <input name='school_1' id='school_1' class='school_input required' title="Required" placeholder="High School">
+                            <input name='school_1_city' id='school_1_city' class='school_city_input required' title='Required' placeholder="City">
+                            <input name='school_1_state' id='school_1_state' class='school_state_input required' title='Required' placeholder="ST">
+                            <input type="text" name='date_1_started' id='date_1_started' class='date_started_input required'>
+                            <input type="text" name='date_1_ended' class='required date_ended_input'>&nbsp;
+                            <select name="grad_1_status" class="grad_status_input">
+                                <option value="00">N/A</option>
+                                <option value="01">Diploma</option>
+                                <option value="02">Certificate</option>
+                                <option value="03">Associate's</option>
+                                <option value="04">Bachelor's</option>
+                                <option value="05">Master's</option>
+                                <option value="06">Ph.D.</option>
+                            </select>
+                        </div>
+                        <div class="row">
+                            <input name='school_2' class='school_input required' title="Required" placeholder="College or Professional">
+                            <input name='school_2_city' class='school_city_input required' title='Required' placeholder="City">
+                            <input name='school_2_state' class='school_state_input required' title='Required' placeholder="ST">
+                            <input name='date_2_started' class='date_started_input required' title='Required'>
+                            <input name='date_2_ended' class='date_ended_input'>
+                            <select name="grad_2_status" class="grad_status_input">
+                                <option value="00">N/A</option>
+                                <option value="01">Diploma</option>
+                                <option value="02">Certificate</option>
+                                <option value="03">Associate's</option>
+                                <option value="04">Bachelor's</option>
+                                <option value="05">Master's</option>
+                                <option value="06">Ph.D.</option>
+                            </select>
+                        </div>
+                        <div class="row">
+                            <input name='school_3' class='school_input required' title="Required" placeholder="College or Professional">
+                            <input name='school_3_city' class='school_city_input required' title='Required' placeholder="City">
+                            <input name='school_3_state' class='school_state_input required' title='Required' placeholder="ST">
+                            <input name='date_3_started' class='date_started_input required' title='Required'>
+                            <input name='date_3_ended' class='date_ended_input'>
+                            <select name="grad_3_status" class="grad_status_input">
+                                <option value="00">N/A</option>
+                                <option value="01">Diploma</option>
+                                <option value="02">Certificate</option>
+                                <option value="03">Associate's</option>
+                                <option value="04">Bachelor's</option>
+                                <option value="05">Master's</option>
+                                <option value="06">Ph.D.</option>
+                            </select>
+                        </div>
+                        <div class="row">
+                            <input name='school_4' class='school_input required' title="Required" placeholder="College or Professional">
+                            <input name='school_4_city' class='school_city_input required' title='Required' placeholder="City">
+                            <input name='school_4_state' class='school_state_input required' title='Required' placeholder="ST">
+                            <input name='date_4_started' class='date_started_input required' title='Required'>
+                            <input name='date_4_ended' class='date_ended_input'>
+                            <select name="grad_4_status" class="grad_status_input">
+                                <option value="00">N/A</option>
+                                <option value="01">Diploma</option>
+                                <option value="02">Certificate</option>
+                                <option value="03">Associate's</option>
+                                <option value="04">Bachelor's</option>
+                                <option value="05">Master's</option>
+                                <option value="06">Ph.D.</option>
+                            </select>
+                        </div>
+                        <div class="row">
+                            <input name='school_5' class='school_input required' title="Required" placeholder="College or Professional">
+                            <input name='school_5_city' class='school_city_input required' title='Required' placeholder="City">
+                            <input name='school_5_state' class='school_state_input required' title='Required' placeholder="ST">
+                            <input name='date_5_started' class='date_started_input required' title='Required'>
+                            <input name='date_5_ended' class='date_ended_input'>
+                            <select name="grad_5_status" class="grad_status_input">
+                                <option value="00">N/A</option>
+                                <option value="01">Diploma</option>
+                                <option value="02">Certificate</option>
+                                <option value="03">Associate's</option>
+                                <option value="04">Bachelor's</option>
+                                <option value="05">Master's</option>
+                                <option value="06">Ph.D.</option>
+                            </select>
+                        </div>
+                        <h3>Skill Development</h3>
+                        <p>We recognize that formal education only captures a small portion of the necessary skills in the workplace, so we have also provided the opportunity below for you to capture skills you may have developed. Please check all that apply.</p>
+                        <div class='skillBox'>
+                            <label for="skillOffice">Office Administration</label><br><br>
+                            <input type="checkbox" name="skillOffice" class="checkbox" value="word">Word<br>
+                            <input type="checkbox" name="skillOffice" class="checkbox" value="excel">Excel<br>
+                            <input type="checkbox" name="skillOffice" class="checkbox" value="access">Access<br>
+                            <input type="checkbox" name="skillOffice" class="checkbox" value="powerpointl">Powerpoint<br>
+                            <input type="checkbox" name="skillOffice" class="checkbox" value="photoshop">Photoshop<br>
+                        </div>
+                        <div class='skillBox'>
+                            <label for="skillOffice">Accounting</label><br><br>
+                            <input type="checkbox" name="skillAccounting" class="checkbox" value="payables">Accounts Payable<br>
+                            <input type="checkbox" name="skillAccounting" class="checkbox" value="receivables">Accounts Receivable<br>
+                            <input type="checkbox" name="skillAccounting" class="checkbox" value="gl">Genderal Ledger<br>
+                            <input type="checkbox" name="skillAccounting" class="checkbox" value="statements">Financial Statements<br>
+                            <input type="checkbox" name="skillAccounting" class="checkbox" value="taxes">Corporate Taxes<br>
+                        </div>
+                        <div class='skillBox'>
+                            <label for="skillOffice">Sales and Marketing</label><br><br>
+                            <input type="checkbox" name="skillOffice" class="checkbox" value="sales">Sales<br>
+                            <input type="checkbox" name="skillOffice" class="checkbox" value="salesManagement">Sales Management<br>
+                            <input type="checkbox" name="skillOffice" class="checkbox" value="marketing">Marketing<br>
+                            <input type="checkbox" name="skillOffice" class="checkbox" value="socialMedia">Social Media<br>
+                            <input type="checkbox" name="skillOffice" class="checkbox" value="printMedia">Print Media<br>
+                        </div>
+                        <div class='skillBox'>
+                            <label for="skillOffice">Technology</label><br><br>
+                            <input type="checkbox" name="skillOffice" class="checkbox" value="word">Computer Hardware<br>
+                            <input type="checkbox" name="skillOffice" class="checkbox" value="excel">Network Solutions<br>
+                            <input type="checkbox" name="skillOffice" class="checkbox" value="access">HTML and CSS<br>
+                            <input type="checkbox" name="skillOffice" class="checkbox" value="powerpointl">JavaScript<br>
+                            <input type="checkbox" name="skillOffice" class="checkbox" value="photoshop">Java or .NET<br>
+                        </div>
+                        <div id="education_close">
+                            <p class='page_instructions'>Please review this information carefully. Once completed and accurate, continue with the application by pressing the button below.</p><br>
+                            <input type="button" class="button" value="Submit and Continue" id="submit_education_form">
+                        </div>
+                        <div id="education_form_error_message" class="error_message">
+                            <p>All highlighted fields must be completed before you can proceed</p>
+                        </div>
+                    </form>
+                </div>
+                <!-- Section three of the employment application gathers prior employment experience -->
+                <div id="tabs-2">
+                    <h3>Employment Information</h3>
+                    <p>Now we need to collect information on your prior employment. For the purposes of this application, we will collect employment information for the past five years, not to exceed your four most recent employers. You will need at least one former employer to continue with the application on-line. As will be repeated at the end of this application process, all present and past employers may be contacted as part of the hiring process.</p>
+                    <form id="employment_form">
+                        <fieldset>
+                            <legend>Most Recent Employer (Current)</legend>
+                            <label for="employer_one">Name of Employer:</label>
+                            <input type="text" name="employer_one" id="employer_one" class="required" title=" "><br>
+                            <label for="position_one">Position / Responsibilities:</label>
+                            <input type="text" name="position_one" id="position_one" class="required" title=" "><br>
+                            <label for="e1_supervisor">Supervisor Name:</label>
+                            <input type="text" name="e1_supervisor" id="e1_supervisor" class="required" title=" "><br>
+                            <label for="e1_address">Street Address:</label>
+                            <input type="text" name="e1_address" id="e1_address" class="required" title=" "><br>
+                            <label for="e1_city">City:</label>
+                            <input type="text" name="e1_city" id="e1_city" class="required" title=" "><br>
+                            <label for="e1_state">State:</label>
+                            <input type="text" name="e1_state" id="e1_state" class="required" title=" "><br>
+                            <label for="e1_zip">ZIP Code:</label>
+                            <input type="text" name="e1_zip" id="e1_zip" class="required" title=" "><br>
+                            <label for="e1_phone">Company Phone Number:</label>
+                            <input type="tel" name="e1_phone" id="e1_phone" class="required" title=" "><br>
+                            <label for="e1_start_date">Employment Start Date:</label>
+                            <input type="text" name="e1_start_date" id="e1_start_date" class="required employment_date" title=" "><br>
+                            <label for="e1_start_pay">Starting Monthly Pay:$</label>
+                            <input type="text" name="e1_start_pay" id="e1_start_pay" class="required" title=" "><br>
+                            <label for="e1_end_date">Employment End Date:</label>
+                            <input type="text" name="e1_end_date" id="e1_end_date" class="employment_date"><br>
+                            <label for="e1_end_pay">Ending Monthly Pay:$</label>
+                            <input type="text" name="e1_end_pay" id="e1_end_pay"><br>
+                            <label for="e1_leave">Reason for Leaving:</label>
+                            <input type="text" name="e1_leave" id="e1_leave" class="required" title=" "><br>
+                        </fieldset>
+                        <fieldset>
+                            <legend>Employer Two</legend>
+                            <label for="employer_two">Name of Employer:</label>
+                            <input type="text" name="employer_two" id="employer_two"><br>
+                            <label for="position_two">Position / Responsibilities:</label>
+                            <input type="text" name="position_two" id="position_two"><br>
+                            <label for="e2_supervisor">Supervisor Name:</label>
+                            <input type="text" name="e2_supervisor" id="e2_supervisor"><br>
+                            <label for="e2_address">Street Address:</label>
+                            <input type="text" name="e2_address" id="e2_address"><br>
+                            <label for="e2_city">City:</label>
+                            <input type="text" name="e2_city" id="e2_city"><br>
+                            <label for="e2_state">State:</label>
+                            <input type="text" name="e2_state" id="e2_state"><br>
+                            <label for="e2_zip">ZIP Code:</label>
+                            <input type="text" name="e2_zip" id="e2_zip"><br>
+                            <label for="e2_phone">Company Phone Number:</label>
+                            <input type="tel" name="e2_phone" id="e2_phone"><br>
+                            <label for="e2_start_date">Employment Start Date:</label>
+                            <input type="text" name="e2_start_date" id="e2_start_date" class="employment_date"><br>
+                            <label for="e2_start_pay">Starting Monthly Pay:$</label>
+                            <input type="text" name="e2_start_pay" id="e2_start_pay"><br>
+                            <label for="e2_end_date">Employment End Date:</label>
+                            <input type="text" name="e2_end_date" id="e2_end_date" class="employment_date"><br>
+                            <label for="e2_end_pay">Ending Monthly Pay:$</label>
+                            <input type="text" name="e2_end_pay" id="e2_end_pay"><br>
+                            <label for="e2_leave">Reason for Leaving:</label>
+                            <input type="text" name="e2_leave" id="e2_leave"><br>
+                        </fieldset>
+                        <input type="checkbox" id="more_employers" class="checkbox">Click here to enter up to two additional employers<br>
+                        <fieldset class="additional_employer">
+                            <legend>Employer Three</legend>
+                            <label for="employer_three">Name of Employer:</label>
+                            <input type="text" name="employer_three" id="employer_three"><br>
+                            <label for="position_three">Position / Responsibilities:</label>
+                            <input type="text" name="position_three" id="position_three"><br>
+                            <label for="e3_supervisor">Supervisor Name:</label>
+                            <input type="text" name="e3_supervisor" id="e3_supervisor"><br>
+                            <label for="e3_address">Street Address:</label>
+                            <input type="text" name="e3_address" id="e3_address"><br>
+                            <label for="e3_city">City:</label>
+                            <input type="text" name="e3_city" id="e3_city"><br>
+                            <label for="e3_state">State:</label>
+                            <input type="text" name="e3_state" id="e3_state"><br>
+                            <label for="e3_zip">ZIP Code:</label>
+                            <input type="text" name="e3_zip" id="e3_zip"><br>
+                            <label for="e3_phone">Company Phone Number:</label>
+                            <input type="tel" name="e3_phone" id="e3_phone"><br>
+                            <label for="e3_start_date">Employment Start Date:</label>
+                            <input type="text" name="e3_start_date" id="e3_start_date" class="employment_date"><br>
+                            <label for="e3_start_pay">Starting Monthly Pay:$</label>
+                            <input type="text" name="e3_start_pay" id="e3_start_pay"><br>
+                            <label for="e3_end_date">Employment End Date:</label>
+                            <input type="text" name="e3_end_date" id="e3_end_date" class="employment_date"><br>
+                            <label for="e3_end_pay">Ending Monthly Pay:$</label>
+                            <input type="text" name="e3_end_pay" id="e3_end_pay"><br>
+                            <label for="e3_leave">Reason for Leaving:</label>
+                            <input type="text" name="e3_leave" id="e3_leave"><br>
+                        </fieldset>
+                        <fieldset class="additional_employer">
+                            <legend>Employer Four</legend>
+                            <label for="employer_four">Name of Employer:</label>
+                            <input type="text" name="employer_four" id="employer_four"><br>
+                            <label for="position_four">Position / Responsibilities:</label>
+                            <input type="text" name="position_four" id="position_four"><br>
+                            <label for="e4_supervisor">Supervisor Name:</label>
+                            <input type="text" name="e4_supervisor" id="e4_supervisor"><br>
+                            <label for="e4_address">Street Address:</label>
+                            <input type="text" name="e4_address" id="e4_address"><br>
+                            <label for="e4_city">City:</label>
+                            <input type="text" name="e4_city" id="e4_city"><br>
+                            <label for="e4_state">State:</label>
+                            <input type="text" name="e4_state" id="e4_state"><br>
+                            <label for="e4_zip">ZIP Code:</label>
+                            <input type="text" name="e4_zip" id="e4_zip"><br>
+                            <label for="e4_phone">Company Phone Number:</label>
+                            <input type="tel" name="e4_phone" id="e4_phone"><br>
+                            <label for="e4_start_date">Employment Start Date:</label>
+                            <input type="text" name="e4_start_date" id="e4_start_date" class="employment_date"><br>
+                            <label for="e4_start_pay">Starting Monthly Pay:$</label>
+                            <input type="text" name="e4_start_pay" id="e4_start_pay"><br>
+                            <label for="e4_end_date">Employment End Date:</label>
+                            <input type="text" name="e4_end_date" id="e4_end_date" class="employment_date"><br>
+                            <label for="e4_end_pay">Ending Monthly Pay:$</label>
+                            <input type="text" name="e4_end_pay" id="e4_end_pay"><br>
+                            <label for="e4_leave">Reason for Leaving:</label>
+                            <input type="text" name="e4_leave" id="e4_leave"><br>
+                        </fieldset>
+                        <label class='page_instructions'>Please review this information carefully. Once completed and accurate, continue with the application by pressing the button below.</label><br>
+                        <input type="button" class="button" value="Submit and Continue" id="submit_employment_form">
+                    </form>
+                    <div id="employment_form_error_message" class="error_message">
+                        <p>All highlighted fields must be completed before you can proceed</p>
+                    </div>
+                </div>
+                <!-- Section four gathers information related to military service and references -->
+                <div id="tabs-3">
+                    <form name="background_form" id="background_form">
+                        <h2>Background Information</h2>
+                        <h3>Military Service</h3>
+
+                        <div id="military_screen">
+                            <label for="military">Have you completed prior military service?</label>
+                            <select name="military">
+                                <option value="99">Yes or No</option>
+                                <option value="00">Yes</option>
+                                <option value="01">No</option>
+                            </select><label class="no_military"></label><br>
+                        </div>
+                        <div style="clear:both;"></div>
+                        <div id="armed_forces">
+                            <label for="branch">Branch of Service:</label>
+                            <select name="branch">
+                                <option value="00">Air Force</option>
+                                <option value="01">Army</option>
+                                <option value="02">Coast Guard</option>
+                                <option value="03">Marine Corps.</option>
+                                <option value="04">National Guard</option>
+                                <option value="05">Navy</option>
+                                <option value="06" selected>--</option>
+                                <!-- branches of armed forces taken from www.defense.gov/ -->
+                            </select><br>
+                            <label for="military_start_date">Date Service Began:</label><br>
+                            <input type="text" name="military_start_date" id="military_start_date" class="military_date"><br>
+                            <label for="military_end_date">Date Service Ended:</label><br>
+                            <input type="text" name="military_end_date" id="military_end_date" class="military_date"><br>
+                            <label for="discharge">Discharge Status:</label><br>
+                            <input type="checkbox" id="discharge_honorable" class="checkbox">Honorable<br>
+                            <input type="checkbox" id="discharge_other" class="checkbox">Other<br>
+                        </div>
+                        <div id="discharge">
+                            <textarea name="discharge_explanation" id="discharge_explanation" placeholder="Enter explanation here if other than honorable discharge"></textarea><br>
+                        </div>
+                        <h3 style="clear:both;">Professional References</h3>
+                        <fieldset class="professional_reference">
+                            <legend>Reference One</legend>
+                            <label for="first_name">First Name:</label>
+                            <input type="text" name="first_name" class="first_name required" title=" "><br>
+                            <label for="last_name">Last Name:</label>
+                            <input type="text" name="last_name" class="last_name required" title=" "><br>
+                            <label for="address">Address:</label>
+                            <input type="text" name="address" class="address required" title=" "><br>
+                            <label for="city">City:</label>
+                            <input type="text" name="city" class="city required" title=" "><br>
+                            <label for="state">State:</label>
+                            <input type="text" name="state" class="state required" title=" "><br>
+                            <label for="zip">ZIP Code:</label>
+                            <input type="text" name="zip" class="zip required" title=" "><br>
+                            <label for="relationship">Relationship:</label>
+                            <input type="text" name="relationship" class="relationship required" title=" "><br>
+                            <label for="phone">Phone:</label>
+                            <input type="tel" name="phone" class="phone required" title=" "><br>
+                            <label for="email">E-Mail:</label>
+                            <input type="text" name="email1" title=" "><br>
+                        </fieldset>
+                        <fieldset class="professional_reference">
+                            <legend>Reference Two</legend>
+                            <label for="first_name">First Name:</label>
+                            <input type="text" name="first_name2" class="first_name required" title=" "><br>
+                            <label for="last_name">Last Name:</label>
+                            <input type="text" name="last_name2" class="last_name required" title=" "><br>
+                            <label for="address">Address:</label>
+                            <input type="text" name="address2" class="address required" title=" "><br>
+                            <label for="city">City:</label>
+                            <input type="text" name="city2" class="city required" title=" "><br>
+                            <label for="state">State:</label>
+                            <input type="text" name="state2" class="state required" title=" "><br>
+                            <label for="zip">ZIP Code:</label>
+                            <input type="text" name="zip2" class="zip required" title=" "><br>
+                            <label for="relationship">Relationship:</label>
+                            <input type="text" name="relationship2" class="relationship required" title=" "><br>
+                            <label for="phone">Phone:</label>
+                            <input type="tel" name="phone2" class="phone required" title=" "><br>
+                            <label for="email">E-Mail:</label>
+                            <input type="text" name="email2" title=" "><br>
+                        </fieldset>
+                        <fieldset class="professional_reference">
+                            <legend>Reference Three</legend>
+                            <label for="first_name">First Name:</label>
+                            <input type="text" name="first_name3" class="first_name required" title=" "><br>
+                            <label for="last_name3">Last Name:</label>
+                            <input type="text" name="last_name3" class="last_name required" title=" "><br>
+                            <label for="address">Address:</label>
+                            <input type="text" name="address3" class="address required" title=" "><br>
+                            <label for="city">City:</label>
+                            <input type="text" name="city3" class="city required" title=" "><br>
+                            <label for="state">State:</label>
+                            <input type="text" name="state3" class="state required" title=" "><br>
+                            <label for="zip">ZIP Code:</label>
+                            <input type="text" name="zip3" class="zip required" title=" "><br>
+                            <label for="relationship">Relationship:</label>
+                            <input type="text" name="relationship3" class="relationship required" title=" "><br>
+                            <label for="phone">Phone:</label>
+                            <input type="tel" name="phone3" class="phone required" title=" "><br>
+                            <label for="email">E-Mail:</label>
+                            <input type="text" name="email3" title=" "><br>
+                        </fieldset>
+                        <div id="background_close">
+                            <p class='page_instructions'>Please review this information carefully. Once completed and accurate, continue with the application by pressing the button below.</p><br>
+                            <input type="button" class="button" value="Submit and Continue" id="submit_background_form">
+                        </div>
+                        <div id="background_form_error_message" class="error_message">
+                            <p>All highlighted fields must be completed before you can proceed</p>
+                        </div>
+                    </form>
+                </div>
+                <!-- The final section of the application gathers criminal background information and consent for background checks -->
+
+                <div id="tabs-4">
+                    <h2>Finishing Up</h2>
+                    <h3>Criminal HIstory</h3>
+                    <form id="application_close">
+                        <div id="crime_screen">
+                            <label for="felony">Have you ever been convicted of a felony?</label>
+                            <select name="felony">
+                                <option value="99">Yes or No</option>
+                                <option value="00">Yes</option>
+                                <option value="01">No</option>
+                            </select><label class="no_felony_selection"></label><br>
+                        </div>
+
+                        <textarea name="criminal_explanation" id="criminal_explanation" placeholder="Explanation required for felony crimes."></textarea>
+
+                        <h3>Agreement and Consent</h3>
+                        <p>I hereby certify that the information hereunder is correct to the best of my knowledge and understand that falsification of this information is grounds for refusal to hire or, if hired, dismissal.
+                        </p>
+                        <p>I hereby authorize any of the persons or organizations listed in my application to give all information concerning my previous employment, education, or any other information they might have, personal or otherwise, with regard to any of the subjects covered by this application, and release all such parties from all liability that may result from furnishing such information to you. I authorize you to request and receive such information. In consideration for my employment and my being considered for employment by your company, I agree to adhere to the rules and regulations of the company and hereby acknowledge that these rules and regulations may be changed by your company at any time, at the company’s sole option and without any prior notice. In addition, I acknowledge that my employment may be terminated, and any offer of employment, if such is made, may be withdrawn, with or without prior notice, at any time, at the option of either the company or me. I understand that no representative of the company has any authority to enter into any agreement for employment for any specified period of time, or to assure or make some other personnel move, either prior to commencement of employment or after I have become employed, or to assure any benefits or terms and conditions of employment, or to make any agreement, that is contrary to the foregoing.
+                        </p>
+                        <p>I hereby acknowledge and agree to these terms as stated with my electronic signature below.
+                            <div id="signature_block">
+                                <label for="signature">Electronic Signature:</label><br>
+                                <input type="text" name="signature" id="signature" class="required" title=" ">
+                                <p>(Type full name in box above)</p>
+                            </div>
+                            <div id="application_close">
+                                <p class='page_instructions'></p><br>
+                                <input type="button" class="button" value="Submit Application" id="submit_application_close_form">
+                            </div>
+                            <div id="application_close_form_error_message" class="error_message">
+                                <p>All highlighted fields must be completed before you can proceed</p>
+                            </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- The following dialog box appears when the application is complete -->
+    <div id="dialog2" title=" ">
+        <h3 style="text-align: center;">Complete!</h3>
+        <p>This has been a demonstration of a completed loan application using HTML, CSS, and JavaScript. No input will be saved. Click 'Submit Application' to return to our gallery page.</p>
+        <p>Have an awesome day!</p>
+    </div>
+    <!-- The footer was taken directly from careers..com and not intended for public use -->
+    <footer>
+        <p id="img">
+            <img src="images/Footer_bottom.png" alt="bottom footer image">
+        </p>
+    </footer>
+</body>
+
+</html>

@@ -1,5 +1,5 @@
 # Employment-Application
-A complete interactive employment application using Javascript and jQuery.  This 
+A complete interactive employment application using HTML, CSS, Javascript, jQuery and jQuery UI.  This 
 application is intended to illustrate a use of Javascript tools.  It is not intended to
 represent a completed employment application.  It is not connected to a database but
 could easily be connected to any SQL or MongoDB resource. 

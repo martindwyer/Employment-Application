@@ -1,0 +1,435 @@
+/* Configuration: Colors, Fonts, And System Defaults */
+
+$base-color: #517aae;
+$base-light: #639ae0;
+$base-dark: #426692;
+$base-darker: #365173;
+
+$dark-gray: #737373;
+$gray: #b3b3b3;
+$light-gray: #d9d9d9;
+$lightest-gray: #f2f2f2;
+
+$font-family: Helvetica, Arial, sans-serif;
+
+$base-font-size: 1.15em;
+$h1-font-size: 200%;
+$h2-font-size: 150%;
+$h3-font-size: 125%;
+$h4-font-size: 115%;
+$h5-font-size: 105%;
+$h6-font-size: 95%;
+
+body {
+  font-family: $font-family;
+}
+
+h1 {
+  font-size: $h1-font-size;
+}
+
+h2 {
+  font-size: $h2-font-size;
+}
+
+h3 {
+  font-size: $h3-font-size;
+}
+
+h4 {
+  font-size: $h4-font-size;
+}
+
+h5 {
+  font-size: $h5-font-size;
+}
+
+h6 {
+  font-size: $h6-font-size;
+}
+
+.container-fluid {
+  margin: 0px;
+  padding: 0px;
+}
+
+#nav-back {
+  width: 100%;
+  height: 100px;
+}
+
+#nav_bar {
+  width: 100%;
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  left: 0px;
+  overflow: hidden;
+
+  margin: 0;
+  padding: 4em;
+  height: 120px;
+
+  img {
+    margin-right: 15px;
+  }
+}
+
+header {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 5em;
+  margin: 0px 0px 50px 0px;
+  background-image: url(../images/PageBanner.png);
+  background-color: #cccccc;
+  height: 50vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+
+  #heading {
+    color: white;
+
+    h1 {
+      font-size: 200%;
+    }
+    h4 {
+      font-size: 120%;
+    }
+  }
+}
+
+.action-container {
+  margin-top: 2em;
+}
+
+.appButton {
+  background-color: $base-color;
+  color: #ffffff;
+  border-color: $base-color;
+  border-radius: 4px;
+
+  width: 100px;
+  height: 3em;
+}
+
+.appButton:hover {
+  box-shadow: 0 0 10px $base-color;
+  cursor: pointer;
+}
+
+.back-button {
+  text-align: center;
+  padding: 0.4em;
+  width: 100px;
+  height: 3em;
+  border: 1px solid $base-color;
+  border-radius: 4px;
+  background-color: $base-color;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.back-button:hover {
+  box-shadow: 0 0 10px $base-color;
+  cursor: pointer;
+}
+
+.tab-form {
+  display: block;
+  width: 90%;
+  margin: 0 auto;
+  margin-bottom: 2em;
+}
+
+legend {
+  text-align: center;
+  margin: 2em auto;
+}
+
+label.col-md-3 {
+  margin-bottom: 1em;
+  padding-right: 2em;
+  text-align: right;
+}
+
+input {
+  display: inline-block;
+  height: 2em;
+
+  border: none;
+  border-bottom: 1px solid $light-gray;
+}
+
+.radio-container {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: flex-start;
+}
+
+.radio-input {
+  border: 0px;
+
+  margin-left: 1em;
+  display: inline-block;
+}
+
+.radio-text {
+  font-size: 1.25em;
+  display: inline-block;
+  margin-left: 1em;
+}
+
+input[type="radio"]:hover {
+  cursor: pointer;
+}
+
+.hasDatepicker {
+  text-align: center;
+}
+
+.hasPlaceholder {
+  text-align: center;
+}
+
+input.hasDatepicker::placeholder {
+  color: lightgray;
+
+  text-align: center;
+}
+
+input.hasPlaceholder::placeholder {
+  color: lightgray;
+  text-align: center;
+}
+
+label.error {
+  color: #cc5500;
+  width: 250px;
+  text-align: left;
+  padding-left: 2em;
+}
+
+::placeholder {
+  font-size: 90%;
+  color: #cc5500;
+}
+
+/* Education tab styling begins here and continues until experience begins  */
+
+#higher-ed {
+  margin: 2em auto;
+  text-align: right;
+
+  h5 {
+    padding-right: 1.5em;
+    padding-top: 0.25em;
+    font-size: 1.25em;
+  }
+}
+
+#schools {
+  margin-top: 1.5em;
+
+  h3 {
+    text-align: center;
+  }
+}
+
+#education-data-form {
+  select {
+    height: 1.5em;
+    border: none;
+    background-color: $light-gray;
+    text-align: center;
+  }
+
+  .schoolButton {
+    text-align: center;
+    margin: 2em 0 0 0;
+  }
+
+  .schoolButton:hover {
+    cursor: pointer;
+    text-shadow: 2px 2px $light-gray;
+  }
+
+  #school-number-2,
+  #school-number-3 {
+    display: none;
+  }
+
+  #get-school-2,
+  #get-school-3 {
+    color: #658bc7;
+  }
+
+  #remove-school-2,
+  #remove-school-3 {
+    color: #cc5500;
+  }
+
+  #school-number-2,
+  #school-number-3 {
+    margin-top: 2em;
+  }
+}
+
+/* Experience formatting begins here and ends when the footprint begins */
+
+#experience {
+  margin: 2em auto;
+  text-align: right;
+
+  h4 {
+    font-size: 1.25em;
+    padding-right: 2em;
+  }
+}
+
+#has-military {
+  margin: 2em auto;
+  text-align: right;
+
+  h4 {
+    padding-right: 1.5em;
+    padding-top: 0.25em;
+    font-size: 1.25em;
+  }
+}
+
+#ex-no,
+#ex-yes {
+  font-size: 1.25em;
+  display: inline-block;
+
+  width: auto;
+}
+
+#ex-no-label,
+#ex-yes-label {
+  font-size: 1.25em;
+  display: inline-block;
+  width: auto;
+}
+
+#employers {
+  h3 {
+    margin: 2em;
+    text-align: center;
+  }
+
+  label {
+    text-align: right;
+  }
+
+  #military-no,
+  #military-yes {
+    font-size: 1.25em;
+    display: inline-block;
+    text-align: left;
+    width: auto;
+  }
+
+  #military-no-label,
+  #military-yes-label {
+    font-size: 1.25em;
+    display: inline-block;
+    width: auto;
+  }
+
+  .row.current-employer {
+    margin: 1em 0em;
+  }
+
+  label.current {
+    width: 100%;
+  }
+
+  input.current {
+    width: 1.25em;
+    height: 1.25em;
+    margin-top: 0.5em;
+  }
+
+  .addRemoveButton {
+    text-align: center;
+    margin: 2em 0 0 0;
+  }
+
+  .addRemoveButton:hover {
+    cursor: pointer;
+    text-shadow: 2px 2px $light-gray;
+  }
+
+  #employer-number-2,
+  #employer-number-3 {
+    display: none;
+  }
+
+  #get-employer-2,
+  #get-employer-3 {
+    color: #658bc7;
+  }
+
+  #remove-employer-2,
+  #remove-employer-3 {
+    color: #cc5500;
+  }
+
+  #employer-number-2,
+  #employer-number-3 {
+    margin-top: 2em;
+  }
+
+  #military-form {
+    border: 1px solid $light-gray;
+    border-radius: 1em;
+    margin: 1em auto;
+    padding: 1.5em;
+    display: none;
+
+    label {
+      width: 100%;
+      text-align: right;
+      padding: 0.5em 1em;
+    }
+    h3 {
+      margin-bottom: 2em;
+      text-align: center;
+    }
+
+    input[name="dischargeComments"] {
+      width: 100%;
+      height: 100px;
+      border: 1px solid $light-gray;
+    }
+
+    #discharge-details::placeholder {
+      text-align: center;
+    }
+  }
+}
+
+/* footer styles begin here */
+
+footer {
+  background: $base-color;
+  margin-top: 4em;
+
+  p {
+    color: #ffffff;
+  }
+
+  a {
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: 100;
+  }
+}

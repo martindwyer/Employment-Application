@@ -1,3 +1,25 @@
+/**
+ * After loading jQuery, jQuery-ui, jQuery-validate, and Bootstrap, the
+ * JavaScript for the application is loaded in five separate files,
+ * which appear below in the order in which they are loaded:
+ *
+ * environment.js  | provides constants and variables used by the application
+ * validation.js   | provides validation rules, messages, and error placement
+ *                   for each of the five forms comprising the application
+ * functions.js    | implements UI functionality such as datepickers and event
+ *                   listeners for areas such as military experience or criminal
+ *                   background - utilizes both environment.js and validation.js
+ * site.js         | serves as the top level in the hierarchy, initiating the
+ *                   functions in functions.js
+ *
+ * Current File:  validation.js
+ * Purpose:       Provide the validation parameters for application forms
+ *
+ */
+
+/**
+ * Validation rules, messages, and error placement for the personal data form
+ */
 $("#personal-data-form").validate({
   rules: {
     legalName: "required",
@@ -67,6 +89,9 @@ $("#personal-data-form").validate({
   },
 });
 
+/**
+ * Validation rules, messages, and error placement for the education data form
+ */
 $("#education-data-form").validate({
   rules: {
     educationNumberOne: "required",
@@ -101,6 +126,9 @@ $("#education-data-form").validate({
   },
 });
 
+/**
+ * Validation rules, messages, and error placement for the experience data form
+ */
 $("#experience-data-form").validate({
   rules: {
     hasMilitary: "required",
@@ -131,6 +159,9 @@ $("#experience-data-form").validate({
   },
 });
 
+/**
+ * Validation rules, messages, and error placement for the footprint data form
+ */
 $("#footprint-data-form").validate({
   rules: {}, // end of rules
 
@@ -138,6 +169,35 @@ $("#footprint-data-form").validate({
   errorPlacement: function (error, element) {
     if (element.val() || element.hasClass("hasPlaceholder") || element.hasClass("hasDatepicker")) {
       error.insertAfter(element);
+    } else {
+      element.attr("placeholder", error.text());
+      element.addClass("input-error-border");
+    }
+  },
+});
+
+/**
+ * Validation rules, messages, and error placement for the final form
+ */
+$("#final-form").validate({
+  rules: {
+    felony: "required",
+    signature: "required",
+  }, // end of rules
+  messages: {
+    felony: "This field is required",
+    signature: "Required",
+  },
+  errorPlacement: function (error, element) {
+    if (
+      element.val() ||
+      element.hasClass("hasPlaceholder") ||
+      element.hasClass("hasDatepicker") ||
+      element.hasClass("dischargeComments") ||
+      element.attr("name", "felony")
+    ) {
+      error.insertAfter(element);
+      $("label.error").addClass("col-md-3");
     } else {
       element.attr("placeholder", error.text());
       element.addClass("input-error-border");

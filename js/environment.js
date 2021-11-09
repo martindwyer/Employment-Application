@@ -1,9 +1,29 @@
-let applicationData = {};
-let numSchools = 1;
-let numEmployers = 1;
+/**
+ * After loading jQuery, jQuery-ui, jQuery-validate, and Bootstrap, the
+ * JavaScript for the application is loaded in five separate files,
+ * which appear below in the order in which they are loaded:
+ *
+ * environment.js  | provides constants and variables used by the application
+ * validation.js   | provides validation rules, messages, and error placement
+ *                   for each of the five forms comprising the application
+ * functions.js    | implements UI functionality such as datepickers and event
+ *                   listeners for areas such as military experience or criminal
+ *                   background - utilizes both environment.js and validation.js
+ * site.js         | serves as the top level in the hierarchy, initiating the
+ *                   functions in functions.js
+ *
+ * Current File:  environment.js
+ * Purpose:       Establish application constants and variables
+ *
+ */
 
-let today = new Date();
+let applicationData = {}; // A JSON Object to hold the application data
+let numSchools = 1; // To track the number of schools
+let numEmployers = 1; // To track the number of employers
 
+let today = new Date(); // The current date
+
+// In order to ensure all applicants are age 16 or older
 let thisDay = today.getDate();
 let thisMonth = today.getMonth() + 1;
 let thisYear = today.getYear() - 100;
@@ -11,8 +31,10 @@ let minHireYear = thisYear - 16;
 let dateString = thisMonth + "/" + thisDay + "/" + minHireYear;
 let maxHireBirthday = new Date(dateString);
 
-let thisObject = {};
-
+/**
+ * formGuide is a guide used to associate each of the five HTML form Id's with the
+ * tab whereit resides
+ */
 const formGuide = {
   "#personal-data-form": 0,
   "#education-data-form": 1,
@@ -21,6 +43,10 @@ const formGuide = {
   "#final-form": 4,
 };
 
+/**
+ * datepickers provides the Id for each datepicker in the site, along with the
+ * parameter values to be set for each datepicker
+ */
 const datepickers = {
   "#datepicker-birthday": {
     dateRange: "-100:-0",
@@ -89,6 +115,11 @@ const datepickers = {
   },
 };
 
+/**
+ * labelGuide is a comprehensive mapping of input name to label for all
+ * five forms in the application.  It is utilized heavily in the process
+ * of displaying the application on the final application tab
+ */
 const labelGuide = {
   legalName: {
     label: "Legal Name",

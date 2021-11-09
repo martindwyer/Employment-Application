@@ -157,7 +157,7 @@
           <div id="tabs-2">
             <form class="tab-form" id="education-data-form" autocomplete="off">
               <fieldset id="education-data">
-                <legend>About your education</legend>
+                <legend>Your Education</legend>
 
                 <div id="higher-ed" class="row">
                   <h5 class="col-md-7">Attend university, college, business or technical school?</h5>
@@ -309,7 +309,7 @@
           <div id="tabs-3">
             <form class="tab-form" id="experience-data-form" autocomplete="off">
               <fieldset id="experience-data">
-                <legend>About your experience</legend>
+                <legend>Your Experience</legend>
                 <div id="experience" class="row">
                   <h4 class="col-md-7">Will this be your first job?</h4>
                   <div class="col-md-5">
@@ -582,63 +582,77 @@
           </div>
           <!-- end of experience tab -->
 
+          <!-- beginning of footprint section of application  -->
           <div id="tabs-4">
             <form class="tab-form" id="footprint-data-form" autocomplete="off">
               <div id="footprint-message">
-                <h4>Your Social Media Footprint</h4>
+                <h4>Your Footprint</h4>
                 <p>
                   This section is intended to over candidates a change to show demonstrate their capacity and character
                   through their social media networks. The only social media networks reviewed as part of your
                   application will be those provided below.
                 </p>
+                <br />
                 <p>Providing your social media network is not required.</p>
               </div>
               <fieldset>
                 <legend>Professional</legend>
 
                 <br />
-                <label for="linkedInProfile">LinkedIn:</label>
-                <input type="text" name="linkedInProfile" id="linhkedin-profile" />
-                <br />
-                <label for="githubProfile">Github:</label>
-                <input type="text" name="githubProfile" id="github-profile" />
-                <br />
-                <label for="stackOverflowProfile">StackOverflow:</label>
-                <input type="text" name="stackOverflowProfile" id="stackoverflow-profile" />
-                <br />
-                <label for="redditProfile">Reddit:</label>
-                <input type="text" name="redditProfile" id="reddit-profile" />
-                <br />
-                <label for="otherProProfiles">Others:</label>
-                <input
-                  type="textarea"
-                  name="otherProProfiles"
-                  id="other-pro-profiles"
-                  placeholder="Provide social media profiles with each separated by a comma."
-                />
-                <br />
+                <div class="row">
+                  <label class="col-md-3" for="linkedInProfile">LinkedIn:</label>
+                  <input class="col-md-6" type="text" name="linkedInProfile" id="linhkedin-profile" />
+                </div>
+                <div class="row">
+                  <label class="col-md-3" for="githubProfile">Github:</label>
+                  <input class="col-md-6" type="text" name="githubProfile" id="github-profile" />
+                </div>
+                <div class="row">
+                  <label class="col-md-3" for="stackOverflowProfile">StackOverflow:</label>
+                  <input class="col-md-6" type="text" name="stackOverflowProfile" id="stackoverflow-profile" />
+                </div>
+                <div class="row">
+                  <label class="col-md-3" for="redditProfile">Reddit:</label>
+                  <input class="col-md-6" type="text" name="redditProfile" id="reddit-profile" />
+                </div>
+                <div class="row">
+                  <label class="col-md-3" for="otherProProfiles">Others:</label>
+                  <input
+                    class="col-md-6"
+                    type=""
+                    type="textarea"
+                    name="otherProProfiles"
+                    id="other-pro-profiles"
+                    placeholder="Provide social media profiles with each separated by a comma."
+                  />
+                </div>
               </fieldset>
               <fieldset>
                 <legend>Personal</legend>
 
                 <br />
-                <label for="twitterProfile">Twitter:</label>
-                <input type="text" name="twitterProfile" id="twitter-profile" />
-                <br />
-                <label for="facebookProfile">Facebook:</label>
-                <input type="text" name="facebookProfile" id="facebook-profile" />
-                <br />
-                <label for="youTubeProfile">YouTube:</label>
-                <input type="text" name="youTubeProfile" id="youtube-profile" />
-                <br />
-                <label for="otherPersonalProfiles">Others:</label>
-                <input
-                  type="textarea"
-                  name="otherPersonalProfiles"
-                  id="other-personal-profiles"
-                  placeholder="Provide social media profiles with each separated by a comma."
-                />
-                <br />
+                <div class="row">
+                  <label class="col-md-3" for="twitterProfile">Twitter:</label>
+                  <input class="col-md-6" type="text" name="twitterProfile" id="twitter-profile" />
+                </div>
+                <div class="row">
+                  <label class="col-md-3" for="facebookProfile">Facebook:</label>
+                  <input class="col-md-6" type="text" name="facebookProfile" id="facebook-profile" />
+                </div>
+                <div class="row">
+                  <label class="col-md-3" for="youTubeProfile">YouTube:</label>
+                  <input class="col-md-6" type="text" name="youTubeProfile" id="youtube-profile" />
+                </div>
+                <div class="row">
+                  <label class="col-md-3" for="otherPersonalProfiles">Others:</label>
+                  <input
+                    class="col-md-6"
+                    type="textarea"
+                    name="otherPersonalProfiles"
+                    id="other-personal-profiles"
+                    placeholder="Provide social media profiles with each separated by a comma."
+                  />
+                </div>
               </fieldset>
               <div class="row action-container">
                 <input type="submit" value="Continue" id="submit-footprint-data-form" class="col-sm-2 appButton" />
@@ -647,7 +661,9 @@
               </div>
             </form>
           </div>
+          <!-- end of footprint section -->
 
+          <!-- beginning of final application section: review and consent -->
           <div id="tabs-5">
             <form class="tab-form" id="final-form" autocomplete="off">
               <fieldset id="final-consent">
@@ -655,14 +671,98 @@
 
                 <h4>Your Application</h4>
 
+                <p>
+                  Please review the application information you have submitted below. If you would like to edit your
+                  input, you may do so by clicking the 'Edit' button below.
+                </p>
+
                 <table id="application-content">
                   <script></script>
                 </table>
               </fieldset>
 
-              <input type="submit" value="Submit" id="submit-application" class="appButton" />
+              <h3>Criminal Background Check</h3>
+              <div id="crime_screen" class="row">
+                <label class="col-md-6" for="felony">
+                  A criminal background check is conducted for all of our applicants.
+                  <br />
+                  Have you ever been convicted of a felony?
+                </label>
+                <div class="col-md-6">
+                  <select class="col-md-3" name="felony">
+                    <option value="">Yes or No</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                  </select>
+                </div>
+                <br />
+
+                <textarea
+                  name="criminal_explanation"
+                  id="criminal_explanation"
+                  placeholder="Explanation required for felony crimes."
+                ></textarea>
+              </div>
+
+              <h3>Agreement and Consent</h3>
+              <p>
+                I hereby certify that the information hereunder is correct to the best of my knowledge and understand
+                that falsification of this information is grounds for refusal to hire or, if hired, dismissal.
+              </p>
+
+              <p>
+                I hereby authorize any of the persons or organizations listed in my application to give all information
+                concerning my previous employment, education, or any other information they might have, personal or
+                otherwise, with regard to any of the subjects covered by this application, and release all such parties
+                from all liability that may result from furnishing such information to you.
+              </p>
+
+              <p>
+                I authorize you to request and receive such information. In consideration for my employment and my being
+                considered for employment by your company, I agree to adhere to the rules and regulations of the company
+                and hereby acknowledge that these rules and regulations may be changed by your company at any time, at
+                the company’s sole option and without any prior notice.
+              </p>
+
+              <p>
+                I acknowledge that my employment may be terminated, and any offer of employment, if such is made, may be
+                withdrawn, with or without prior notice, at any time, at the option of either the company or me.
+              </p>
+
+              <p>
+                I understand that no representative of the company has any authority to enter into any agreement for
+                employment for any specified period of time, or to assure or make some other personnel move, either
+                prior to commencement of employment or after I have become employed, or to assure any benefits or terms
+                and conditions of employment, or to make any agreement, that is contrary to the foregoing.
+              </p>
+
+              <p>
+                I understand that this application is for demonstration purposes only, and not intended to represent an
+                actual application for employment.
+              </p>
+              <p>I hereby acknowledge and agree to these terms as stated with my electronic signature below.</p>
+
+              <div id="signature_block" class="row">
+                <label class="col-md-3" for="signature">Electronic Signature:</label>
+                <br />
+                <div class="col-md-8">
+                  <input
+                    class="col-md-4 hasPlaceholder"
+                    type="text"
+                    name="signature"
+                    id="signature"
+                    placeholder="Enter Full Name Here"
+                  />
+                </div>
+              </div>
+              <div class="row action-container">
+                <input type="submit" value="Submit" id="submit-application" class="col-sm-2 appButton" />
+                <div class="col-sm"></div>
+                <div id="edit-application" class="col-sm-2 back-button">Edit</div>
+              </div>
             </form>
           </div>
+          <!-- end of final application section -->
         </div>
       </div>
     </div>
@@ -672,22 +772,20 @@
       <div class="container py-4">
         <div class="row gy-4 gx-5">
           <div class="col-lg-4 col-md-6">
-            <h5 class="h1 text-white">FB.</h5>
-            <p class="small">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.
-            </p>
+            <h5 class="h1 text-white">Careers</h5>
+            <p class="small">An interactive employment application.</p>
             <p class="small mb-0">
               &copy; Copyrights. All rights reserved.
-              <a href="#">Bootstrapious.com</a>
+              <a href="https://mdbytes.com">MD Bytes</a>
             </p>
           </div>
           <div class="col-lg-2 col-md-6">
             <h5 class="text-white mb-3">Quick links</h5>
             <ul class="list-unstyled text-muted">
-              <li><a href="#">Home</a></li>
-              <li><a href="#">About</a></li>
-              <li><a href="#">Get started</a></li>
-              <li><a href="#">FAQ</a></li>
+              <li><a href="#">Teams</a></li>
+              <li><a href="#">Locations</a></li>
+              <li><a href="#">Benefits</a></li>
+              <li><a href="#">Jobs</a></li>
             </ul>
           </div>
           <div class="col-lg-2 col-md-6">
@@ -709,14 +807,12 @@
     <!-- scripts -->
     <!-- external -->
     <script src="jquery/jquery-3.6.0.min.js"></script>
-    <script src="popperjs/popper.min.js"></script>
-    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="bootstrap/js/bootstrap.bundle.js"></script>
 
     <script src="jquery/ui/jquery-ui.min.js"></script>
     <script src="jquery/validate/jquery.validate.min.js"></script>
 
     <!-- site specific -->
-    <script src="js/styles.js"></script>
     <script src="js/environment.js"></script>
     <script src="js/validation.js"></script>
     <script src="js/functions.js"></script>

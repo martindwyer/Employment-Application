@@ -1,10 +1,37 @@
+/**
+ * After loading jQuery, jQuery-ui, jQuery-validate, and Bootstrap, the
+ * JavaScript for the application is loaded in five separate files,
+ * which appear below in the order in which they are loaded:
+ *
+ * environment.js  | provides constants and variables used by the application
+ * validation.js   | provides validation rules, messages, and error placement
+ *                   for each of the five forms comprising the application
+ * functions.js    | implements UI functionality such as datepickers and event
+ *                   listeners for areas such as military experience or criminal
+ *                   background - utilizes both environment.js and validation.js
+ * site.js         | serves as the top level in the hierarchy, initiating the
+ *                   functions in functions.js
+ *
+ * Current File:  functions.js
+ * Purpose:       Implements UI functionality using environment.js and validation.js
+ *
+ */
+
+/*
+ *  makeTabs(selectionString) facilitates making tabs for
+ *  each application section
+ */
 const makeTabs = (selectionString) => {
   $(selectionString).tabs();
 };
 
+/*
+ * makeTabsVisible(tabNumber) streamlines making only one
+ * selected tabNumber viewable at a time
+ */
 const makeTabVisible = (tabNumber) => {
-  tabNumbers = [0, 1, 2, 3, 4];
-  disabledTabs = [];
+  let tabNumbers = [0, 1, 2, 3, 4];
+  let disabledTabs = [];
   for (let num of tabNumbers) {
     if (num != tabNumber) {
       disabledTabs.push(num);
@@ -13,6 +40,12 @@ const makeTabVisible = (tabNumber) => {
   $("#tabs").tabs("option", "disabled", disabledTabs);
   $("#tabs").tabs("option", "active", tabNumber);
 };
+
+/**
+ * setUpDatepickers utilizes the environment variable datepickers
+ * which provides the Id's and parameters for each of the application
+ * datepicker objects
+ */
 
 const setUpDatepickers = () => {
   let datepickerKeys = Object.keys(datepickers);
@@ -27,16 +60,35 @@ const setUpDatepickers = () => {
   }
 };
 
+/**
+ * enableBackButtons utilizes the environment variable formGuide
+ * to streamline the setup for users to go back and edit the previous
+ * section - or in the case of the final page go back and edit
+ * the application from the beginning
+ */
 const enableBackButtons = () => {
   for (form in formGuide) {
-    let selectionString = form + " .back-button";
-    let previousTab = formGuide[form] - 1;
-    $(selectionString).click(() => {
-      makeTabVisible(previousTab);
-    });
+    if (form == "#final-form") {
+      let selectionString = form + " .back-button";
+      $(selectionString).click(() => {
+        makeTabVisible(0);
+      });
+    } else {
+      let selectionString = form + " .back-button";
+      let previousTab = formGuide[form] - 1;
+      $(selectionString).click(() => {
+        makeTabVisible(previousTab);
+      });
+    }
   }
 };
 
+/**
+ * submitForm streamlines form submission for each of the tab forms
+ * @param {*} selectionString | identifies the form submitted
+ * @param {*} evt | the full event of the form submission
+ * applicationData | the environment variable capturing the application
+ */
 const submitForm = (selectionString, evt) => {
   evt.preventDefault();
   if ($(selectionString).valid()) {
@@ -54,12 +106,20 @@ const submitForm = (selectionString, evt) => {
   }
 };
 
+/**
+ * personalSetup initializes the submit process for the
+ * personal portion of the application
+ */
 const personalSetup = () => {
   $("#personal-data-form").submit((evt) => {
     submitForm("#personal-data-form", evt);
   });
 };
 
+/**
+ * getSchool facilitates the display of a second or third school
+ * @param {*} schoolNumber | either 2 or 3
+ */
 const getSchool = (schoolNumber) => {
   if (schoolNumber == 2) {
     $("#school-number-2").css("display", "block");
@@ -78,6 +138,10 @@ const getSchool = (schoolNumber) => {
   }
 };
 
+/**
+ * removeSchool facilitates the removal of a second or third school
+ * @param {} schoolNumber
+ */
 const removeSchool = (schoolNumber) => {
   if (schoolNumber == 3) {
     $("#school-number-3").css("display", "none");
@@ -95,7 +159,12 @@ const removeSchool = (schoolNumber) => {
   }
 };
 
+/**
+ * schoolSetup is an encapsulated approach to setting up the
+ * education section of the application
+ */
 const schoolSetup = () => {
+  // facilitating the adding and removing of schools as needed
   $("#get-school-2").click(() => {
     getSchool(2);
   });
@@ -112,6 +181,7 @@ const schoolSetup = () => {
     removeSchool(2);
   });
 
+  // discerning whether or not the education section needs completed
   $("#ed-yes").click(() => {
     $("#schools").css("display", "block");
   });
@@ -120,6 +190,7 @@ const schoolSetup = () => {
     $("#schools").css("display", "none");
   });
 
+  // the unique submission protocol for the education data form
   $("#education-data-form").submit(function (evt) {
     evt.preventDefault();
 
@@ -133,7 +204,12 @@ const schoolSetup = () => {
   });
 };
 
+/**
+ * setUpMilitary facilitates the functionality necessary for the
+ * military section of the application
+ */
 const setUpMilitary = () => {
+  // display military form only if candidate has military background
   $("#military-yes").click(function () {
     $("#military-form").css("display", "block");
     $("#military-start").addClass("required");
@@ -146,6 +222,7 @@ const setUpMilitary = () => {
     $("#discharge-status").removeClass("required");
   });
 
+  // display discharge comments only if discharge was other than honorable
   $("#discharge-status").change(function () {
     if ($(this).val() == "Other") {
       $("#discharge-comments").css("display", "block");
@@ -157,6 +234,10 @@ const setUpMilitary = () => {
   });
 };
 
+/**
+ * getEmployer facilitates the viewing of a second or third employer
+ * @param {*} employerNumber | either 2 or 3
+ */
 const getEmployer = (employerNumber) => {
   if (employerNumber == 2) {
     $("#employer-number-2").css("display", "block");
@@ -175,6 +256,10 @@ const getEmployer = (employerNumber) => {
   }
 };
 
+/**
+ * removeEmployer facilitates the removing of second or third employer
+ * @param {*} employerNumber | either 2 or 3
+ */
 const removeEmployer = (employerNumber) => {
   if (employerNumber == 2) {
     $("#employer-number-2").css("display", "none");
@@ -192,9 +277,15 @@ const removeEmployer = (employerNumber) => {
   }
 };
 
+/**
+ * experienceSetup is an encapsulated approach to setting up the
+ * experience section of the application
+ */
 const experienceSetup = () => {
+  // setting up the military section
   setUpMilitary();
 
+  // discerning whether or not the experience section is required
   $("#ex-no").click();
 
   $("#ex-no").click(function () {
@@ -205,6 +296,7 @@ const experienceSetup = () => {
     $("#employers").css("display", "none");
   });
 
+  // Facilitating the addition of up to three employers
   $("#get-employer-2").click(function () {
     getEmployer(2);
   });
@@ -221,6 +313,7 @@ const experienceSetup = () => {
     removeEmployer(3);
   });
 
+  // The unique submission protocol for the experience data form
   $("#experience-data-form").submit(function (evt) {
     evt.preventDefault();
 
@@ -240,6 +333,11 @@ const experienceSetup = () => {
   });
 };
 
+/**
+ * displayApplication utilizes the environment variables applicationData,
+ * and labelGuide to iteratively print the application as rows in a table
+ * on the final application tab.  The table Id is #application-content
+ */
 const displayApplication = () => {
   let applicationDisplay = document.querySelector("#application-content");
 
@@ -257,6 +355,10 @@ const displayApplication = () => {
   }
 };
 
+/**
+ * With no required input from the applicant, the footprint set up is
+ * fairly straightforward
+ */
 const footprintSetup = () => {
   $("#footprint-data-form").submit(function (evt) {
     evt.preventDefault();
@@ -264,4 +366,31 @@ const footprintSetup = () => {
   });
 };
 
-$("#tabs-5").change(function () {});
+/**
+ * finishSetup sets up the activity in the final applicaiton tab
+ */
+const finishSetup = () => {
+  // Felony explanation is displayed and required only if applicant indicates
+  // they have committed a felony
+  $("select[name='felony']").change(function () {
+    if ($(this).val() == "yes") {
+      $("#criminal_explanation").css("display", "block");
+      $("#criminal_explanation").addClass("required");
+    } else {
+      $("#criminal_explanation").css("display", "none");
+      $("#criminal_explanation").removeClass("required");
+    }
+  });
+
+  // unique submission protocol for final form
+  $("#final-form").submit(function (evt) {
+    evt.preventDefault();
+
+    if ($("#final-form").valid()) {
+      submitForm("#final-form", evt);
+      console.log("final form submitted", applicationData);
+    } else {
+      console.log("education form not valid");
+    }
+  });
+};

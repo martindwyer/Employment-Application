@@ -17,7 +17,7 @@ The present version, v2.0.0 is in the process of being completed. In addition to
 
 Modifications in process for v2.0.0 are designed to improve interaction on mobile devices.
 
-====
+---
 
 Note: Public license does not mean this project can or should be used for academic purposes.
 Students utilizing the code in this project should carefully consult the guidelines of their

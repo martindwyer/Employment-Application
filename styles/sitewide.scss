@@ -55,20 +55,15 @@ h6 {
 
 #nav-back {
   width: 100%;
-  height: 100px;
+  height: auto;
 }
 
 #nav_bar {
   width: 100%;
-  position: fixed;
-  top: 0px;
-  right: 0px;
-  left: 0px;
-  overflow: hidden;
 
   margin: 0;
-  padding: 4em;
-  height: 120px;
+  padding: 1em;
+  height: auto;
 
   img {
     margin-right: 15px;
@@ -506,5 +501,85 @@ footer {
     text-decoration: none;
     color: #ffffff;
     font-weight: 100;
+  }
+
+  img {
+    width: 60%;
+  }
+
+  #footer-image-holder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (max-width: 992px) {
+  #nav_bar {
+    display: none;
+  }
+
+  header {
+    padding-left: 2em;
+  }
+}
+
+// For mobile presentation adjusting to less than medium device type
+@media (max-width: 768px) {
+  label.col-md-3 {
+    margin-bottom: 1em;
+    padding-right: 2em;
+    text-align: left;
+  }
+
+  header {
+    padding-left: 1em;
+  }
+
+  input {
+    margin-bottom: 1em;
+  }
+
+  select {
+    margin-bottom: 1em;
+  }
+
+  #higher-ed > h5 {
+    font-size: 115%;
+    text-align: left;
+  }
+
+  #has-military > h4,
+  #experience h4 {
+    text-align: left;
+  }
+
+  #employers label.col-md-3 {
+    text-align: left;
+  }
+
+  #employers label.current {
+    text-align: center;
+  }
+
+  #employers > div.row.current-employer > div.col-md-4 {
+    display: none;
+  }
+
+  #employers div.row.current-employer > div.col-md-1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #footprint-message p {
+    width: 90%;
+    margin: 0 auto;
+    padding: 0;
+  }
+
+  footer div div div {
+    text-align: center;
   }
 }

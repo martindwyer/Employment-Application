@@ -21,7 +21,7 @@
 makeTabs("#tabs");
 
 // To make only the first tab visible when application begins
-makeTabVisible(0);
+//makeTabVisible(0);
 
 // To set up datepickers which are used throughout the application
 setUpDatepickers();

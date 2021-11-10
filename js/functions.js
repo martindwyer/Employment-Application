@@ -389,6 +389,8 @@ const finishSetup = () => {
     if ($("#final-form").valid()) {
       submitForm("#final-form", evt);
       console.log("final form submitted", applicationData);
+      applicationData = {};
+      window.location = "https://mdbytes.com";
     } else {
       console.log("education form not valid");
     }

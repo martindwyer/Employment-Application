@@ -106,11 +106,22 @@ const submitForm = (selectionString, evt) => {
   }
 };
 
+const setUpStates = (states) => {
+  let statesHtml = "<option value=''></option>";
+  for (let state of states) {
+    statesHtml += "<option value='" + state + "'>" + state + "</option>";
+  }
+
+  $("#state-address").html(statesHtml);
+};
+
 /**
  * personalSetup initializes the submit process for the
  * personal portion of the application
  */
 const personalSetup = () => {
+  setUpStates(states);
+
   $("#personal-data-form").submit((evt) => {
     submitForm("#personal-data-form", evt);
   });

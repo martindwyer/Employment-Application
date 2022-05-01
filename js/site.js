@@ -17,6 +17,22 @@
  *
  */
 
+import k from "./test.js";
+import {
+  states,
+  labelGuide,
+  datepickers,
+  formGuide,
+  maxHireBirthday,
+  dateString,
+  minHireYear,
+  thisYear,
+  thisMonth,
+  thisDay,
+} from "./environment.js";
+
+console.log(k);
+
 // To initiate the jQuery tabs effect
 makeTabs("#tabs");
 

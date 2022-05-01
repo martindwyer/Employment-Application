@@ -318,7 +318,7 @@ const labelGuide = {
   },
 };
 
-const states = [
+export const states = [
   "AL",
   "AK",
   "AZ",

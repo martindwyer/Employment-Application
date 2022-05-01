@@ -40,13 +40,13 @@ makeTabs("#tabs");
 makeTabVisible(0);
 
 // To set up datepickers which are used throughout the application
-setUpDatepickers();
+setUpDatepickers(datepickers);
 
 // To enable back buttons which allow user to go back and edit the app
-enableBackButtons();
+enableBackButtons(formGuide);
 
 // Setting up the personal information section of the application
-personalSetup();
+personalSetup(states);
 
 // Setting up the education section of the application
 schoolSetup();

@@ -24,18 +24,18 @@ let numEmployers = 1; // To track the number of employers
 let today = new Date(); // The current date
 
 // In order to ensure all applicants are age 16 or older
-let thisDay = today.getDate();
-let thisMonth = today.getMonth() + 1;
-let thisYear = today.getYear() - 100;
-let minHireYear = thisYear - 16;
-let dateString = thisMonth + "/" + thisDay + "/" + minHireYear;
-let maxHireBirthday = new Date(dateString);
+export let thisDay = today.getDate();
+export let thisMonth = today.getMonth() + 1;
+export let thisYear = today.getYear() - 100;
+export let minHireYear = thisYear - 16;
+export let dateString = thisMonth + "/" + thisDay + "/" + minHireYear;
+export let maxHireBirthday = new Date(dateString);
 
 /**
  * formGuide is a guide used to associate each of the five HTML form Id's with the
  * tab whereit resides
  */
-const formGuide = {
+export const formGuide = {
   "#personal-data-form": 0,
   "#education-data-form": 1,
   "#experience-data-form": 2,
@@ -47,7 +47,7 @@ const formGuide = {
  * datepickers provides the Id for each datepicker in the site, along with the
  * parameter values to be set for each datepicker
  */
-const datepickers = {
+export const datepickers = {
   "#datepicker-birthday": {
     dateRange: "-100:-0",
     maxDatePickable: maxHireBirthday,
@@ -120,7 +120,7 @@ const datepickers = {
  * five forms in the application.  It is utilized heavily in the process
  * of displaying the application on the final application tab
  */
-const labelGuide = {
+export const labelGuide = {
   legalName: {
     label: "Legal Name",
   },

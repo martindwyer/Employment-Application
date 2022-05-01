@@ -47,7 +47,7 @@ const makeTabVisible = (tabNumber) => {
  * datepicker objects
  */
 
-const setUpDatepickers = () => {
+const setUpDatepickers = (datepickers) => {
   let datepickerKeys = Object.keys(datepickers);
   for (key of datepickerKeys) {
     $(key).datepicker({
@@ -66,7 +66,7 @@ const setUpDatepickers = () => {
  * section - or in the case of the final page go back and edit
  * the application from the beginning
  */
-const enableBackButtons = () => {
+const enableBackButtons = (formGuide) => {
   for (form in formGuide) {
     if (form == "#final-form") {
       let selectionString = form + " .back-button";
@@ -119,7 +119,7 @@ const setUpStates = (states) => {
  * personalSetup initializes the submit process for the
  * personal portion of the application
  */
-const personalSetup = () => {
+const personalSetup = (states) => {
   setUpStates(states);
 
   $("#personal-data-form").submit((evt) => {
@@ -361,7 +361,12 @@ const displayApplication = () => {
       let item = labelGuide[key];
       let itemLabel = item["label"];
 
-      applicationDisplay.innerHTML += "<tr><td>" + itemLabel + "</td><td>" + applicationData[key] + "</td></tr>";
+      applicationDisplay.innerHTML +=
+        "<tr><td>" +
+        itemLabel +
+        "</td><td>" +
+        applicationData[key] +
+        "</td></tr>";
     }
   }
 };

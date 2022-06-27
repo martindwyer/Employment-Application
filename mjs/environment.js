@@ -17,9 +17,9 @@
  *
  */
 
-export let applicationData = {}; // A JSON Object to hold the application data
-export let numSchools = 1; // To track the number of schools
-export let numEmployers = 1; // To track the number of employers
+let applicationData = {}; // A JSON Object to hold the application data
+let numSchools = 1; // To track the number of schools
+let numEmployers = 1; // To track the number of employers
 
 let today = new Date(); // The current date
 

@@ -17,13 +17,11 @@
  *
  */
 
-import { applicationData, labelGuide, formGuide } from "./environment.js";
-
 /*
  *  makeTabs(selectionString) facilitates making tabs for
  *  each application section
  */
-export const makeTabs = (selectionString) => {
+const makeTabs = (selectionString) => {
   $(selectionString).tabs();
 };
 
@@ -31,7 +29,7 @@ export const makeTabs = (selectionString) => {
  * makeTabsVisible(tabNumber) streamlines making only one
  * selected tabNumber viewable at a time
  */
-export const makeTabVisible = (tabNumber) => {
+const makeTabVisible = (tabNumber) => {
   let tabNumbers = [0, 1, 2, 3, 4];
   let disabledTabs = [];
   for (let num of tabNumbers) {
@@ -49,9 +47,9 @@ export const makeTabVisible = (tabNumber) => {
  * datepicker objects
  */
 
-export const setUpDatepickers = (datepickers) => {
+const setUpDatepickers = (datepickers) => {
   let datepickerKeys = Object.keys(datepickers);
-  for (let key of datepickerKeys) {
+  for (key of datepickerKeys) {
     $(key).datepicker({
       changeMonth: true,
       changeYear: true,
@@ -68,8 +66,8 @@ export const setUpDatepickers = (datepickers) => {
  * section - or in the case of the final page go back and edit
  * the application from the beginning
  */
-export const enableBackButtons = (formGuide) => {
-  for (let form in formGuide) {
+const enableBackButtons = (formGuide) => {
+  for (form in formGuide) {
     if (form == "#final-form") {
       let selectionString = form + " .back-button";
       $(selectionString).click(() => {
@@ -91,10 +89,10 @@ export const enableBackButtons = (formGuide) => {
  * @param {*} evt | the full event of the form submission
  * applicationData | the environment variable capturing the application
  */
-export const submitForm = (selectionString, evt) => {
+const submitForm = (selectionString, evt) => {
   evt.preventDefault();
   if ($(selectionString).valid()) {
-    for (let element of evt.target) {
+    for (element of evt.target) {
       applicationData[element.name] = element.value;
     }
     console.log("form submitted", applicationData);
@@ -108,7 +106,7 @@ export const submitForm = (selectionString, evt) => {
   }
 };
 
-export const setUpStates = (states) => {
+const setUpStates = (states) => {
   let statesHtml = "<option value=''></option>";
   for (let state of states) {
     statesHtml += "<option value='" + state + "'>" + state + "</option>";
@@ -121,7 +119,7 @@ export const setUpStates = (states) => {
  * personalSetup initializes the submit process for the
  * personal portion of the application
  */
-export const personalSetup = (states) => {
+const personalSetup = (states) => {
   setUpStates(states);
 
   $("#personal-data-form").submit((evt) => {
@@ -133,7 +131,7 @@ export const personalSetup = (states) => {
  * getSchool facilitates the display of a second or third school
  * @param {*} schoolNumber | either 2 or 3
  */
-export const getSchool = (schoolNumber) => {
+const getSchool = (schoolNumber) => {
   if (schoolNumber == 2) {
     $("#school-number-2").css("display", "block");
     $("#get-school-2").css("display", "none");
@@ -155,7 +153,7 @@ export const getSchool = (schoolNumber) => {
  * removeSchool facilitates the removal of a second or third school
  * @param {} schoolNumber
  */
-export const removeSchool = (schoolNumber) => {
+const removeSchool = (schoolNumber) => {
   if (schoolNumber == 3) {
     $("#school-number-3").css("display", "none");
     $("#get-school-3").css("display", "block");
@@ -176,7 +174,7 @@ export const removeSchool = (schoolNumber) => {
  * schoolSetup is an encapsulated approach to setting up the
  * education section of the application
  */
-export const schoolSetup = () => {
+const schoolSetup = () => {
   // facilitating the adding and removing of schools as needed
   $("#get-school-2").click(() => {
     getSchool(2);
@@ -221,7 +219,7 @@ export const schoolSetup = () => {
  * setUpMilitary facilitates the functionality necessary for the
  * military section of the application
  */
-export const setUpMilitary = () => {
+const setUpMilitary = () => {
   // display military form only if candidate has military background
   $("#military-yes").click(function () {
     $("#military-form").css("display", "block");
@@ -251,7 +249,7 @@ export const setUpMilitary = () => {
  * getEmployer facilitates the viewing of a second or third employer
  * @param {*} employerNumber | either 2 or 3
  */
-export const getEmployer = (employerNumber) => {
+const getEmployer = (employerNumber) => {
   if (employerNumber == 2) {
     $("#employer-number-2").css("display", "block");
     $("#get-employer-2").css("display", "none");
@@ -273,7 +271,7 @@ export const getEmployer = (employerNumber) => {
  * removeEmployer facilitates the removing of second or third employer
  * @param {*} employerNumber | either 2 or 3
  */
-export const removeEmployer = (employerNumber) => {
+const removeEmployer = (employerNumber) => {
   if (employerNumber == 2) {
     $("#employer-number-2").css("display", "none");
     $("#get-employer-2").css("display", "block");
@@ -294,7 +292,7 @@ export const removeEmployer = (employerNumber) => {
  * experienceSetup is an encapsulated approach to setting up the
  * experience section of the application
  */
-export const experienceSetup = () => {
+const experienceSetup = () => {
   // setting up the military section
   setUpMilitary();
 
@@ -351,7 +349,7 @@ export const experienceSetup = () => {
  * and labelGuide to iteratively print the application as rows in a table
  * on the final application tab.  The table Id is #application-content
  */
-export const displayApplication = () => {
+const displayApplication = () => {
   let applicationDisplay = document.querySelector("#application-content");
 
   let appKeys = Object.keys(labelGuide);
@@ -377,7 +375,7 @@ export const displayApplication = () => {
  * With no required input from the applicant, the footprint set up is
  * fairly straightforward
  */
-export const footprintSetup = () => {
+const footprintSetup = () => {
   $("#footprint-data-form").submit(function (evt) {
     evt.preventDefault();
     submitForm("#footprint-data-form", evt);
@@ -387,7 +385,7 @@ export const footprintSetup = () => {
 /**
  * finishSetup sets up the activity in the final applicaiton tab
  */
-export const finishSetup = () => {
+const finishSetup = () => {
   // Felony explanation is displayed and required only if applicant indicates
   // they have committed a felony
   $("select[name='felony']").change(function () {
@@ -407,6 +405,7 @@ export const finishSetup = () => {
     if ($("#final-form").valid()) {
       submitForm("#final-form", evt);
       console.log("final form submitted", applicationData);
+      applicationData = {};
       window.location = "https://mdbytes.com";
     } else {
       console.log("education form not valid");

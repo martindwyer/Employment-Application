@@ -17,24 +17,19 @@
  *
  */
 
-import "../jquery/jquery-3.6.0.min.js";
-import "../bootstrap/js/bootstrap.bundle.min.js";
-import "../jquery/ui/jquery-ui.min.js";
-import "../jquery/validate/jquery.validate.min.js";
 import k from "./test.js";
-import { states, datepickers, formGuide } from "./environment.js";
 import {
-  makeTabs,
-  makeTabVisible,
-  setUpDatepickers,
-  enableBackButtons,
-  personalSetup,
-  schoolSetup,
-  experienceSetup,
-  footprintSetup,
-  finishSetup,
-} from "./functions.js";
-import "./validation.js";
+  states,
+  labelGuide,
+  datepickers,
+  formGuide,
+  maxHireBirthday,
+  dateString,
+  minHireYear,
+  thisYear,
+  thisMonth,
+  thisDay,
+} from "./environment.js";
 
 console.log(k);
 

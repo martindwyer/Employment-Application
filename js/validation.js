@@ -78,13 +78,16 @@ $("#personal-data-form").validate({
     },
   },
   errorPlacement: function (error, element) {
-    if (element.val() || element.hasClass("hasPlaceholder") || element.hasClass("hasDatepicker")) {
+    if (
+      element.val() ||
+      element.hasClass("hasPlaceholder") ||
+      element.hasClass("hasDatepicker")
+    ) {
       error.insertAfter(element);
       console.dir(element.next());
     } else {
       element.attr("placeholder", error.text());
       element.addClass("input-error-border");
-      console.log(element.attr("placeholder"));
     }
   },
 });
@@ -167,7 +170,11 @@ $("#footprint-data-form").validate({
 
   messages: {},
   errorPlacement: function (error, element) {
-    if (element.val() || element.hasClass("hasPlaceholder") || element.hasClass("hasDatepicker")) {
+    if (
+      element.val() ||
+      element.hasClass("hasPlaceholder") ||
+      element.hasClass("hasDatepicker")
+    ) {
       error.insertAfter(element);
     } else {
       element.attr("placeholder", error.text());

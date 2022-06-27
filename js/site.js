@@ -36,8 +36,6 @@ import {
 } from "./functions.js";
 import "./validation.js";
 
-console.log(k);
-
 // To initiate the jQuery tabs effect
 makeTabs("#tabs");
 

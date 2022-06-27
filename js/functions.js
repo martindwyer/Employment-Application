@@ -97,7 +97,6 @@ export const submitForm = (selectionString, evt) => {
     for (let element of evt.target) {
       applicationData[element.name] = element.value;
     }
-    console.log("form submitted", applicationData);
     let nextTab = formGuide[selectionString] + 1;
     makeTabVisible(nextTab);
     if ($("#tabs-5").attr("aria-hidden") == "false") {
@@ -335,7 +334,7 @@ export const experienceSetup = () => {
     if (hasExperience) {
       if ($("#experience-data-form").valid()) {
         submitForm("#experience-data-form", evt);
-        console.log("experience form submitted", applicationData);
+
         makeTabVisible(3);
       } else {
         console.log("education form not valid");

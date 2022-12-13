@@ -19,6 +19,4 @@ Modifications in process for v2.0.0 are designed to improve interaction on mobil
 
 ---
 
-Note: Public license does not mean this project can or should be used for academic purposes.
-Students utilizing the code in this project should carefully consult the guidelines of their
-academic institution.
+Note: The accompanying LICENSE document provides open source license for use of this software broadly. Please review the document as license is not granted for all purposes, such as academic plagiarism.

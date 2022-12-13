@@ -13,7 +13,7 @@ would be needed to save and transmit application information.
 
 The first version of this application was published in 2017 and is included in the releases as v1.0.0 of the repository.
 
-The present version, v2.0.0 is in the process of being completed. In addition to jQueary UI and Validation, v2.0.0 is built with the Bootstrap grid structure.
+The present version, v2.0.0 is in the process of being completed. In addition to jQuery UI and Validation, v2.0.0 is built with the Bootstrap grid structure.
 
 Modifications in process for v2.0.0 are designed to improve interaction on mobile devices.
 
